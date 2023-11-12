@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Your Web App</title>
+</head>
+<body>
+    <h1>Predict your profit</h1>
+    <form action="/predict" method="post">
+        <div class="input-container">
+            <label for="rd_spend">R&D Spend:</label>
+            <input type="text" name="rd_spend" required>
+        </div>
+        <div class="input-container">
+            <label for="administration">Administration:</label>
+            <input type="text" name="administration" required>
+        </div>
+        <div class="input-container">
+            <label for="marketing_spend">Marketing Spend:</label>
+            <input type="text" name="marketing_spend" required>
+        </div>
+        <div class="input-container">
+            <label for="city">City:</label>
+            <input type="text" name="city" required>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+        <div id="result-container">
+            <p>Model Prediction: {{ prediction }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
